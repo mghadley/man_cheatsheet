@@ -15,13 +15,14 @@ SBL_SHORTCUTS = {
 	"Same Word Selection" => "select a word, hold down cmd, press the ‘d’ key as many times as you want to select"
 }
 
+menu_options = ["1 Command Line", "2 Search", "3 View Sublime Shortcuts",
+	  					  "4 Search Sublime Shortcuts", "5 Exit"]
+
+@print_menu = -> {puts menu_options}
+
 def menu
 	puts "****CHEATSHEET****"
-	puts "1 Command Line"
-	puts "2 Search"
-	puts "3 View Sublime Shortcuts"
-	puts "4 Search Sublime Shortcuts"
-	puts "5 Exit"
+	@print_menu.call
 	user_input = gets.chomp
 	exit(0) if user_input == "5"
 	user_input.to_i
@@ -47,7 +48,7 @@ end
 def search_man_options
 	puts "****Type command you are looking for (beginning only searches accepted)"
 	print ">"
-	MAN_OPTIONS.grep(/^#{gets.chomp}/)	
+	MAN_OPTIONS.grep(/^#{gets.chomp}/)
 end
 
 def display_page(command_index)
